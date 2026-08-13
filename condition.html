@@ -6,6 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+    var n = Number(prompt("Enter a number"));
+var temp = n;
+var sum = 0;
+var digits = n.toString().length;
+
+while (temp > 0) {
+    var digit = temp % 10;
+    sum = sum + digit ** digits;
+    temp = Math.floor(temp / 10);
+}
+
+if (sum == n)
+    console.log("Armstrong Number");
+else
+    console.log("Not Armstrong Number");
+</script>
 </body>
 </html>
