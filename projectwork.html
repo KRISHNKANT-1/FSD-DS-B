@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Shop</title>
+
+    <style>
+
+        .shop-box {
+            width: 350px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            margin: 20px auto;
+        }
+
+        button {
+            padding: 10px 25px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- OUTER BOX -->
+    <div class="shop-box">
+
+        <h1>Online Shop</h1>
+
+
+        <!-- Products and Prices -->
+        <div class="products">
+
+            <div>
+                Tea<br>
+                Coffee<br>
+                Rice<br>
+                Sugar<br>
+            </div>
+
+            <div>
+                120<br>
+                150<br>
+                200<br>
+                250<br>
+            </div>
+
+        </div>
+
+
+        <button onclick="dropdown()">
+            Order Now
+        </button>
+
+
+        <!-- Bill -->
+        <div id="result"></div>
+
+    </div>
+
+
+    <script>
+
+        const menu = {
+            "tea": 120,
+            "coffee": 150,
+            "rice": 200,
+            "sugar": 250
+        };
+
+
+        function dropdown() {
+
+            const order = prompt(
+                "Enter your order (tea, coffee, rice, sugar):"
+            );
+
+            if (order === null) {
+                return;
+            }
+
+
+            const product = order.toLowerCase();
+
+
+            if (menu[product] === undefined) {
+
+                alert("Invalid order. Please try again.");
+
+                return;
+            }
+
+
+            const quantity = Number(
+                prompt("Enter quantity in kg:")
+            );
+
+
+            if (isNaN(quantity) || quantity <= 0) {
+
+                alert("Invalid quantity.");
+
+                return;
+            }
+
+
+            const price = menu[product];
+
+            const total = price * quantity;
+
+
+            document.getElementById("result").innerHTML =
+
+                "<h3>Your Bill</h3>" +
+
+                "Product: " + product +
+                "<br>" +
+
+                "Price: ₹" + price + " / kg" +
+                "<br>" +
+
+                "Quantity: " + quantity + " kg" +
+                "<br>" +
+
+                "<strong>Total Amount: ₹" + total + "</strong>";
+        }
+
+    </script>
+
+</body>
+
+</html>
